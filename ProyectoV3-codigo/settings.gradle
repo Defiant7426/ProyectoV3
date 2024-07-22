@@ -1,0 +1,4 @@
+rootProject.name = 'ProyectoV3'
+include 'game-service', 'map-service', 'player-service', 'tower-service', 'wave-service'
+include 'tower-service'
+

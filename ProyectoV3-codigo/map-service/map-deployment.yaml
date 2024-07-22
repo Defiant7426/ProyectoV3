@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: map-service
+  template:
+    metadata:
+      labels:
+        app: map-service
+    spec:
+      containers:
+        - name: map-service
+          image: map-service
+          ports:
+            - containerPort: 8080

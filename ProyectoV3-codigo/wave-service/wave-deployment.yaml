@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wave-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wave-service
+  template:
+    metadata:
+      labels:
+        app: wave-service
+    spec:
+      containers:
+        - name: wave-service
+          image: wave-service
+          ports:
+            - containerPort: 8080

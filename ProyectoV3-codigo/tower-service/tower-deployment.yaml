@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tower-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tower-service
+  template:
+    metadata:
+      labels:
+        app: tower-service
+    spec:
+      containers:
+        - name: tower-service
+          image: tower-service
+          ports:
+            - containerPort: 8080

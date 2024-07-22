@@ -1,0 +1,51 @@
+version: '3'
+services:
+  game:
+    build: ./game-service
+    ports:
+      - "8080:8080"
+    networks:
+      - game-network
+    volumes:
+        - game-data:/app/data
+    depends_on:
+      - map
+      - player
+      - tower
+      - wave
+
+  map:
+    build: ./map-service
+    networks:
+      - game-network
+    volumes:
+      - game-data:/app/data
+
+  player:
+    build: ./player-service
+    networks:
+      - game-network
+    volumes:
+      - game-data:/app/data
+
+  tower:
+    build: ./tower-service
+    networks:
+      - game-network
+    volumes:
+        - game-data:/app/data
+
+  wave:
+    build: ./wave-service
+    networks:
+      - game-network
+    volumes:
+        - game-data:/app/data
+
+networks:
+  game-network:
+    driver: bridge
+
+volumes:
+  game-data:
+    driver: local
